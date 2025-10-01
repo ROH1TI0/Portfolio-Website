@@ -3,11 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Greetings! I am Rohit.</title>
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="./title_img.png">
-    <link rel="shortcut icon" type="image/png" href="./title_img.png">
+    <title>Rohit Sonawane - Portfolio</title>
+    <meta name="description" content="Portfolio of Rohit Sonawane - Masters student specializing in Natural Language Processing, Deep Learning, and Multi-modal AI">
     
     <!-- React and Babel for JSX -->
     <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
@@ -17,45 +14,26 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
+    <!-- Lucide React Icons (CDN version) -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
     <style>
+        /* Custom gradient highlight style */
         .gradient-highlight {
-            background: linear-gradient(to right, #d1fae5, #a7f3d0);
-            display: inline-block;
-            padding: 0.15rem 0.6rem;
-            margin: 0 0.1rem;
-            border-radius: 0.5rem;
-            font-weight: 600;
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
             color: #1f2937;
-            box-shadow: 0 1px 2px rgba(20, 184, 166, 0.2);
         }
         
-        .dynamic-background {
-            background-image: linear-gradient(to bottom, #fefefe 0%, #fefcfb 100%); 
-            background-color: #fefcfb;
-            background-image: 
-              radial-gradient(at 50% 10%, #fff0f5 0%, transparent 50%),
-              radial-gradient(at 90% 90%, #f0fff0 0%, transparent 60%),
-              linear-gradient(to bottom, #fefefe 0%, #f5f5f5 100%);
-            background-attachment: scroll;
-            background-size: cover;
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
         }
         
-        .logo-container {
-            width: 48px;
-            height: 48px;
-            background: white;
-            border-radius: 8px;
-            padding: 4px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+        /* Custom font loading */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         
-        .logo-container img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
+        body {
+            font-family: 'Inter', sans-serif;
         }
     </style>
 </head>
@@ -63,42 +41,23 @@
     <div id="root"></div>
     
     <script type="text/babel">
+        // Lucide icons setup
+        const { Github, Linkedin, Mail, ArrowUpRight, GraduationCap, Building2, BookOpen } = lucide;
         const { useState, useEffect, useRef } = React;
         
-        // Simple icon components (replacing Lucide)
-        const MailIcon = () => (
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.945a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-            </svg>
-        );
-        
-        const GithubIcon = () => (
-            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-            </svg>
-        );
-        
-        const LinkedinIcon = () => (
-            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-            </svg>
-        );
-        
-        const ArrowUpRightIcon = () => (
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-            </svg>
-        );
-        
         // Configuration & Data
+        const PROFILE_IMAGE_URL = "./self.jpeg";
+        const RESUME_FILE_URL = "./Rohit Sonawane_Resume.pdf";
+        
         const profileData = {
           name: "Rohit Sonawane",
+          title: "", 
           heroInfo: [
             { text: "USC '27" },
             { text: "Los Angeles, CA" },
-            { text: "sonawane.rohit251@gmail.com", link: "mailto:sonawane.rohit251@gmail.com", icon: MailIcon }, 
-            { text: "LinkedIn", link: "https://www.linkedin.com/in/rohitsonawane10/", icon: LinkedinIcon },
-            { text: "GitHub", link: "https://github.com/ROH1TI0", icon: GithubIcon },
+            { text: "sonawane.rohit251@gmail.com", link: "mailto:sonawane.rohit251@gmail.com", icon: Mail}, 
+            { text: "LinkedIn", link: "https://www.linkedin.com/in/rohitsonawane10/", icon: Linkedin },
+            { text: "GitHub", link: "https://github.com/ROH1TI0", icon: Github },
           ],
           about: [
             "I am a Masters student with experience in <b>Natural Language Processing, Deep Learning, and Multi-modal AI</b>. My focus is on building and deploying scalable, high-accuracy intelligent systems for <i>finance, healthcare, and education</i>.",
@@ -111,7 +70,7 @@
             email: "sonawane.rohit251@gmail.com",
             github: "https://github.com/ROH1TI0", 
             linkedin: "https://www.linkedin.com/in/rohitsonawane10/", 
-            resume: "./Rohit Sonawane_Resume.pdf"
+            resume: RESUME_FILE_URL
           }
         };
         
@@ -159,7 +118,7 @@
                 'Analyzed and predicted growth trends with the Analytics team, steering client decision-making that ultimately <span class="gradient-highlight">benefited 1 million+ general consumers</span>',
             ],
             tags: ["Data Pipeline", "SQL", "Analytics", "Python", "Data Consolidation"],
-            logo: "./translab.png",
+            logo: "./translab_logo.png",
             logoAlt: "Translab Technologies Logo"
           },
         ];
@@ -169,6 +128,7 @@
                 title: "Machine Learning based Wildfire Area Estimation Leveraging Weather Forecast Data",
                 journal: "International Journal of Information Technology and Computer Science (IJITCS)",
                 description: 'Authored and published research on an advanced wildfire area estimation tool, utilizing AutoGluon to train machine learning models on weather data, reaching a <span class="text-teal-600 font-semibold">final RMSE of 1.84 km<sup>2</sup></span>.',
+                doi: "10.5815/ijitcs.2025.01.01",
                 tags: ["Publication", "AutoGluon", "Machine Learning", "Time Series", "Data Science"],
                 link: "https://www.mecs-press.org/ijitcs/ijitcs-v17-n1/v17n1-1.html",
                 authors: "Saket Sultania, Rohit Sonawane, Prashasti Kanikar",
@@ -178,6 +138,7 @@
                 title: "Reinforcement Learning for Subject Mastery Prediction Using Double Deep Q-Network",
                 journal: "SSRN Electronic Journal (Preprint)",
                 description: 'Introduces a novel <b>Double Deep Q-Network (DDQN)</b> framework to enhance personalized subject mastery prediction in digital education. The DDQN approach mitigated overestimation bias and showed an <span class="text-teal-600 font-semibold">18.7% improvement</span> in average reward over baselines.',
+                doi: "N/A",
                 tags: ["Reinforcement Learning", "DDQN", "Personalized Learning", "Deep Learning", "Human-computer interface"],
                 link: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5498641",
                 authors: "Soni Shweta, Saket Sultania, Rohit Sonawane, Vansh Shah", 
@@ -200,7 +161,7 @@
           },
         ];
         
-        // Component for fade-in animation on scroll
+        // Component for subtle fade-in animation on scroll
         const AnimatedElement = ({ children, delay = 0 }) => {
           const ref = useRef(null);
           const [isVisible, setIsVisible] = useState(false);
@@ -213,7 +174,11 @@
                   observer.unobserve(entry.target);
                 }
               },
-              { threshold: 0.1 }
+              {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1,
+              }
             );
         
             if (ref.current) {
@@ -293,9 +258,7 @@
                         <AnimatedElement key={index} delay={index * 150}>
                             <div className="p-5 rounded-xl border border-gray-100 bg-transparent shadow-sm hover:shadow-md transition duration-300">
                                 <div className="flex items-start space-x-4 mb-3">
-                                    <div className="logo-container flex-shrink-0">
-                                        <img src={edu.logo} alt={edu.logoAlt} />
-                                    </div>
+                                    <img src={edu.logo} alt={edu.logoAlt} className="w-10 h-10 rounded-lg object-cover flex-shrink-0" />
                                     <div className="flex-grow">
                                         <div className="flex justify-between items-center">
                                             <h3 className="text-xl font-bold text-gray-900">
@@ -341,9 +304,7 @@
                 <AnimatedElement key={index} delay={index * 100}>
                   <div className="p-5 rounded-xl border border-gray-100 bg-transparent shadow-sm hover:shadow-md transition duration-300">
                     <div className="flex items-start space-x-4 mb-4">
-                        <div className="logo-container flex-shrink-0">
-                            <img src={exp.logo} alt={exp.logoAlt} />
-                        </div>
+                        <img src={exp.logo} alt={exp.logoAlt} className="w-10 h-10 rounded-lg object-cover flex-shrink-0" />
                         <div className="flex-grow">
                             <div className="flex justify-between items-start">
                                 <h3 className="text-xl font-bold text-gray-900">
@@ -378,16 +339,20 @@
         );
         
         // Publications Section
-        const PublicationsSection = () => (
-            <section id="publications" className="py-12 md:py-16">
-              <SectionHeading title="Publications" />
-              <div className="max-w-4xl mx-auto space-y-8">
-                {publicationData.map((pub, index) => (
-                  <AnimatedElement key={index} delay={index * 100}>
+        const PublicationListItem = ({ pub, index }) => {
+            const formattedAuthors = pub.authors.split(',').map((author, i) => (
+                <span key={i} className={author.trim().includes(profileData.name) ? 'font-bold' : 'font-medium'}>
+                    {author.trim()}{i < pub.authors.split(',').length - 1 ? ', ' : ''}
+                </span>
+            ));
+        
+            return (
+                <AnimatedElement delay={index * 100}>
                     <a 
                         href={pub.link} 
                         target="_blank" 
                         rel="noopener noreferrer" 
+                        aria-label={`View full publication: ${pub.title}`}
                         className="block"
                     >
                         <div className="p-5 rounded-xl border border-gray-100 bg-transparent shadow-sm hover:shadow-md transition duration-300">
@@ -398,14 +363,15 @@
                                     </h3>
                                     <p className="text-lg italic text-gray-600 font-medium mt-1">{pub.journal}</p>
                                 </div>
-                                <ArrowUpRightIcon />
+                                <ArrowUpRight className="w-5 h-5 text-teal-600 flex-shrink-0 ml-4 mt-2" aria-hidden="true" />
                             </div>
                             
                             <p className="text-sm text-gray-600 mb-3">
-                                <span className="font-semibold">Authors:</span> <span className={pub.authors.includes(profileData.name) ? 'font-bold' : 'font-medium'}>{pub.authors}</span> ({pub.date})
+                                <span className="font-semibold">Authors:</span> {formattedAuthors} ({pub.date})
                             </p>
         
-                            <p className="text-base text-gray-700 mb-4" dangerouslySetInnerHTML={{ __html: pub.description }}></p>
+                            <p className="text-base text-gray-700 mb-4" dangerouslySetInnerHTML={{ __html: pub.description }}>
+                            </p>
                             
                             <div className="flex flex-wrap gap-2 pt-3 border-t border-gray-100">
                                 {pub.tags.map((tag, i) => (
@@ -416,45 +382,60 @@
                             </div>
                         </div>
                     </a>
-                  </AnimatedElement>
+                </AnimatedElement>
+            );
+        };
+        
+        const PublicationsSection = () => (
+            <section id="publications" className="py-12 md:py-16">
+              <SectionHeading title="Publications" />
+              <div className="max-w-4xl mx-auto space-y-8">
+                {publicationData.map((pub, index) => (
+                  <PublicationListItem key={index} pub={pub} index={index} />
                 ))}
               </div>
             </section>
         );
         
         // Projects Section
+        const ProjectCard = ({ project }) => (
+            <AnimatedElement>
+                <a 
+                    href={project.githubLink} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    aria-label={`View GitHub repository for ${project.title}`}
+                    className="block"
+                >
+                    <div className="p-5 rounded-xl border border-gray-100 bg-transparent shadow-sm hover:shadow-md transition duration-300 ease-in-out transform hover:-translate-y-1">
+                        <div className="flex justify-between items-start mb-3">
+                            <h3 className="text-xl font-bold text-gray-900 leading-snug">
+                                {project.title}
+                            </h3>
+                            <Github className="w-5 h-5 text-teal-600 flex-shrink-0 ml-4 mt-1" aria-hidden="true" />
+                        </div>
+                        
+                        <p className="mt-3 text-gray-700 text-base" dangerouslySetInnerHTML={{ __html: project.description }}>
+                        </p>
+        
+                        <div className="mt-4 flex flex-wrap gap-2 pt-3 border-t border-gray-100">
+                            {project.tags.map((tag, i) => (
+                                <span key={i} className="px-3 py-1 text-xs font-medium bg-violet-100 text-violet-700 rounded-full">
+                                    {tag}
+                                </span>
+                            ))}
+                        </div>
+                    </div>
+                </a>
+            </AnimatedElement>
+        );
+        
         const ProjectsSection = () => (
             <section id="projects" className="py-12 md:py-16">
                 <SectionHeading title="Projects" />
                 <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
                     {projectData.map((project, index) => (
-                        <AnimatedElement key={index}>
-                            <a 
-                                href={project.githubLink} 
-                                target="_blank" 
-                                rel="noopener noreferrer" 
-                                className="block"
-                            >
-                                <div className="p-5 rounded-xl border border-gray-100 bg-transparent shadow-sm hover:shadow-md transition duration-300 ease-in-out transform hover:-translate-y-1">
-                                    <div className="flex justify-between items-start mb-3">
-                                        <h3 className="text-xl font-bold text-gray-900 leading-snug">
-                                            {project.title}
-                                        </h3>
-                                        <GithubIcon />
-                                    </div>
-                                    
-                                    <p className="mt-3 text-gray-700 text-base" dangerouslySetInnerHTML={{ __html: project.description }}></p>
-                
-                                    <div className="mt-4 flex flex-wrap gap-2 pt-3 border-t border-gray-100">
-                                        {project.tags.map((tag, i) => (
-                                            <span key={i} className="px-3 py-1 text-xs font-medium bg-violet-100 text-violet-700 rounded-full">
-                                                {tag}
-                                            </span>
-                                        ))}
-                                    </div>
-                                </div>
-                            </a>
-                        </AnimatedElement>
+                        <ProjectCard key={index} project={project} />
                     ))}
                 </div>
             </section>
@@ -470,29 +451,29 @@
                 href={`mailto:${profileData.contact.email}`}
                 className="inline-flex items-center justify-center px-8 py-3 text-lg font-semibold rounded-full text-white bg-teal-600 hover:bg-teal-700 transition duration-300 shadow-lg hover:shadow-xl"
               >
-                <MailIcon />
-                <span className="ml-2">Email Me</span>
+                <Mail className="w-5 h-5 mr-2" />
+                Email Me
               </a>
             </AnimatedElement>
         
             <AnimatedElement delay={300}>
               <div className="mt-10 flex justify-center space-x-6">
-                <a href={profileData.contact.github} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-teal-600 transition duration-300">
-                  <GithubIcon />
+                <a href={profileData.contact.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" className="text-gray-500 hover:text-teal-600 transition duration-300">
+                  <Github className="w-8 h-8" />
                 </a>
-                <a href={profileData.contact.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-teal-600 transition duration-300">
-                  <LinkedinIcon />
+                <a href={profileData.contact.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" className="text-gray-500 hover:text-teal-600 transition duration-300">
+                  <Linkedin className="w-8 h-8" />
                 </a>
               </div>
             </AnimatedElement>
           </section>
         );
         
-        // Main Portfolio Component
+        // Main App Component
         const Portfolio = () => {
           const handleDownloadResume = () => {
             const link = document.createElement('a');
-            link.href = './Rohit Sonawane_Resume.pdf'; 
+            link.href = RESUME_FILE_URL; 
             link.download = 'Rohit_Sonawane_Resume.pdf';
             document.body.appendChild(link);
             link.click();
@@ -500,96 +481,124 @@
           };
           
           return (
-            <div className="min-h-screen text-gray-900 dynamic-background">
-              <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                
-                {/* Profile Photo */}
-                <div className="pt-16 pb-8 flex justify-center">
+            <>
+              <style>
+                {`
+                  .dynamic-background {
+                    background-image: linear-gradient(to bottom, #fefefe 0%, #fefcfb 100%); 
+                    background-color: #fefcfb;
+                    background-image: 
+                      radial-gradient(at 50% 10%, #fff0f5 0%, transparent 50%),
+                      radial-gradient(at 90% 90%, #f0fff0 0%, transparent 60%),
+                      linear-gradient(to bottom, #fefefe 0%, #f5f5f5 100%);
+                    background-attachment: scroll;
+                    background-size: cover;
+                  }
+                  
+                  .gradient-highlight {
+                    display: inline-block;
+                    padding: 0.15rem 0.6rem;
+                    margin: 0 0.1rem;
+                    border-radius: 0.5rem;
+                    font-weight: 600;
+                    color: #1f2937;
+                    background-image: linear-gradient(to right, #d1fae5, #a7f3d0);
+                    box-shadow: 0 1px 2px rgba(20, 184, 166, 0.2);
+                    line-height: 1.5;
+                  }
+                `}
+              </style>
+              <div className="min-h-screen text-gray-900 dynamic-background">
+                <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                  
+                  {/* Profile Photo */}
+                  <div className="pt-16 pb-8 flex justify-center">
+                      <AnimatedElement delay={0}>
+                          <img 
+                              src={PROFILE_IMAGE_URL} 
+                              alt={profileData.name} 
+                              className="w-40 h-40 rounded-full object-cover shadow-2xl border-4 border-white ring-4 ring-teal-500/50"
+                              onError={(e) => { e.target.onerror = null; e.target.src='https://placehold.co/160x160/eeeeee/333333?text=RS'; }} 
+                          />
+                      </AnimatedElement>
+                  </div>
+                  
+                  {/* Hero Section */}
+                  <section className="flex flex-col justify-center items-center pb-12 text-center">
                     <AnimatedElement delay={0}>
-                        <img 
-                            src="./self.jpeg" 
-                            alt={profileData.name} 
-                            className="w-40 h-40 rounded-full object-cover shadow-2xl border-4 border-white ring-4 ring-teal-500/50"
-                            onError={(e) => { e.target.onerror = null; e.target.src='https://placehold.co/160x160/eeeeee/333333?text=RS'; }} 
-                        />
+                      <p className="text-2xl font-semibold text-teal-600 mb-2">Hello, I'm</p>
                     </AnimatedElement>
-                </div>
-                
-                {/* Hero Section */}
-                <section className="flex flex-col justify-center items-center pb-12 text-center">
-                  <AnimatedElement delay={0}>
-                    <p className="text-2xl font-semibold text-teal-600 mb-2">Hello, I'm</p>
-                  </AnimatedElement>
-                  <AnimatedElement delay={100}>
-                    <h2 className="text-6xl sm:text-7xl lg:text-8xl font-black mb-6 text-gray-900 tracking-tighter leading-tight">
-                      {profileData.name}
-                    </h2>
-                  </AnimatedElement>
+                    <AnimatedElement delay={100}>
+                      <h2 className="text-6xl sm:text-7xl lg:text-8xl font-black mb-6 text-gray-900 tracking-tighter leading-tight">
+                        {profileData.name}
+                      </h2>
+                    </AnimatedElement>
+                    
+                    <AnimatedElement delay={300}>
+                      <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-lg text-gray-600 font-medium mb-10 mx-auto max-w-2xl">
+                          {profileData.heroInfo.map((item, index) => (
+                              <span key={index} className="flex items-center space-x-2">
+                                  {item.icon ? (
+                                      <a 
+                                        href={item.link} 
+                                        target={item.text !== "sonawane.rohit251@gmail.com" ? "_blank" : "_self"} 
+                                        rel="noopener noreferrer" 
+                                        aria-label={item.text} 
+                                        className="flex items-center font-medium hover:text-teal-600 transition duration-200"
+                                      >
+                                          <item.icon className="w-5 h-5 mr-1" />
+                                          {item.text}
+                                      </a>
+                                  ) : (
+                                      <span className="font-medium">{item.text}</span>
+                                  )}
+                                  {index < profileData.heroInfo.length - 1 && (
+                                      <span className="text-gray-400">·</span>
+                                  )}
+                              </span>
+                          ))}
+                      </div>
+                    </AnimatedElement>
+                    
+                    <AnimatedElement delay={400}>
+                      <button
+                        onClick={handleDownloadResume}
+                        className="px-6 py-3 text-lg font-semibold rounded-full border-2 border-teal-600 text-teal-600 hover:bg-teal-600 hover:text-white transition duration-300 shadow-md hover:shadow-lg"
+                      >
+                        View My Resume
+                      </button>
+                    </AnimatedElement>
+                  </section>
                   
-                  <AnimatedElement delay={300}>
-                    <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-lg text-gray-600 font-medium mb-10 mx-auto max-w-2xl">
-                        {profileData.heroInfo.map((item, index) => (
-                            <span key={index} className="flex items-center space-x-2">
-                                {item.icon ? (
-                                    <a 
-                                      href={item.link} 
-                                      target={item.text !== "sonawane.rohit251@gmail.com" ? "_blank" : "_self"} 
-                                      rel="noopener noreferrer" 
-                                      className="flex items-center font-medium hover:text-teal-600 transition duration-200"
-                                    >
-                                        <item.icon />
-                                        <span className="ml-1">{item.text}</span>
-                                    </a>
-                                ) : (
-                                    <span className="font-medium">{item.text}</span>
-                                )}
-                                {index < profileData.heroInfo.length - 1 && (
-                                    <span className="text-gray-400">·</span>
-                                )}
-                            </span>
-                        ))}
-                    </div>
-                  </AnimatedElement>
-                  
-                  <AnimatedElement delay={400}>
-                    <button
-                      onClick={handleDownloadResume}
-                      className="px-6 py-3 text-lg font-semibold rounded-full border-2 border-teal-600 text-teal-600 hover:bg-teal-600 hover:text-white transition duration-300 shadow-md hover:shadow-lg"
-                    >
-                      View My Resume
-                    </button>
-                  </AnimatedElement>
-                </section>
+                  {/* Main Content Sections */}
+                  <div className="space-y-20 lg:space-y-32">
+                    <AboutSection />
+                    <EducationSection /> 
+                    <ExperienceSection />
+                    <ProjectsSection />
+                    <PublicationsSection /> 
+                    <ContactSection />
+                  </div>
+                </main>
                 
-                {/* Main Content Sections */}
-                <div className="space-y-20 lg:space-y-32">
-                  <AboutSection />
-                  <EducationSection /> 
-                  <ExperienceSection />
-                  <ProjectsSection />
-                  <PublicationsSection /> 
-                  <ContactSection />
-                </div>
-              </main>
-              
-              {/* Footer */}
-              <footer className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 border-t border-gray-100 mt-20">
-                <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
-                  <p className="mb-2 md:mb-0">
-                    Designed and Developed by Rohit Sonawane
-                  </p>
-                  <p>
-                    Built with React & Tailwind CSS.
-                  </p>
-                </div>
-              </footer>
-            </div>
+                {/* Footer */}
+                <footer className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 border-t border-gray-100 mt-20">
+                  <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+                    <p className="mb-2 md:mb-0">
+                      Designed and Developed by Rohit Sonawane
+                    </p>
+                    <p>
+                      Built with React & Tailwind CSS.
+                    </p>
+                  </div>
+                </footer>
+              </div>
+            </>
           );
         };
         
-        console.log("About to render Portfolio...");
+        // Render the component
         ReactDOM.render(<Portfolio />, document.getElementById('root'));
-        console.log("Portfolio rendered successfully!");
     </script>
 </body>
 </html>

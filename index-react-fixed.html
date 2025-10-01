@@ -3,11 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Greetings! I am Rohit.</title>
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="./title_img.png">
-    <link rel="shortcut icon" type="image/png" href="./title_img.png">
+    <title>Rohit Sonawane - Portfolio</title>
     
     <!-- React and Babel for JSX -->
     <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
@@ -38,24 +34,6 @@
               linear-gradient(to bottom, #fefefe 0%, #f5f5f5 100%);
             background-attachment: scroll;
             background-size: cover;
-        }
-        
-        .logo-container {
-            width: 48px;
-            height: 48px;
-            background: white;
-            border-radius: 8px;
-            padding: 4px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .logo-container img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
         }
     </style>
 </head>
@@ -159,7 +137,7 @@
                 'Analyzed and predicted growth trends with the Analytics team, steering client decision-making that ultimately <span class="gradient-highlight">benefited 1 million+ general consumers</span>',
             ],
             tags: ["Data Pipeline", "SQL", "Analytics", "Python", "Data Consolidation"],
-            logo: "./translab.png",
+            logo: "./translab_logo.png",
             logoAlt: "Translab Technologies Logo"
           },
         ];
@@ -293,9 +271,7 @@
                         <AnimatedElement key={index} delay={index * 150}>
                             <div className="p-5 rounded-xl border border-gray-100 bg-transparent shadow-sm hover:shadow-md transition duration-300">
                                 <div className="flex items-start space-x-4 mb-3">
-                                    <div className="logo-container flex-shrink-0">
-                                        <img src={edu.logo} alt={edu.logoAlt} />
-                                    </div>
+                                    <img src={edu.logo} alt={edu.logoAlt} className="w-10 h-10 rounded-lg object-cover flex-shrink-0" />
                                     <div className="flex-grow">
                                         <div className="flex justify-between items-center">
                                             <h3 className="text-xl font-bold text-gray-900">
@@ -341,9 +317,7 @@
                 <AnimatedElement key={index} delay={index * 100}>
                   <div className="p-5 rounded-xl border border-gray-100 bg-transparent shadow-sm hover:shadow-md transition duration-300">
                     <div className="flex items-start space-x-4 mb-4">
-                        <div className="logo-container flex-shrink-0">
-                            <img src={exp.logo} alt={exp.logoAlt} />
-                        </div>
+                        <img src={exp.logo} alt={exp.logoAlt} className="w-10 h-10 rounded-lg object-cover flex-shrink-0" />
                         <div className="flex-grow">
                             <div className="flex justify-between items-start">
                                 <h3 className="text-xl font-bold text-gray-900">
