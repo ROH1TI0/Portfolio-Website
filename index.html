@@ -6,8 +6,8 @@
     <title>Greetings! I am Rohit.</title>
     
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="./title_img.png">
-    <link rel="shortcut icon" type="image/png" href="./title_img.png">
+    <link rel="icon" type="image/png" href="./images/title_img.png">
+    <link rel="shortcut icon" type="image/png" href="./images/title_img.png">
     
     <!-- React and Babel for JSX -->
     <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
@@ -122,7 +122,7 @@
                 degree: "Master's in Computer Science (Artificial Intelligence)",
                 details: "Focus on advanced topics in Deep Learning, NLP, and Computer Vision.",
                 location: "Los Angeles, CA",
-                logo: "./usc_logo.png",
+                logo: "./images/usc_logo.png",
                 logoAlt: "USC Logo"
             },
             {
@@ -132,7 +132,7 @@
                 gpa: "3.86/4.0",
                 details: "Foundational training in Software Engineering, Data Structures and Artificial Intelligence.",
                 location: "Mumbai, India",
-                logo: "./nmims_logo.png",
+                logo: "./images/nmims_logo.png",
                 logoAlt: "NMIMS Logo"
             }
         ];
@@ -147,7 +147,7 @@
                 'Built a refined unsupervised clustering model to group customer addresses, successfully identifying <span class="gradient-highlight">~23% incorrect/duplicate entries</span> for improved data quality.',
             ],
             tags: ["NLP", "Unsupervised Learning", "Python", "Scikit-learn", "Data Quality"],
-            logo: "./crif_logo.svg",
+            logo: "./images/crif_logo.svg",
             logoAlt: "CRIF Highmark Logo"
           },
           {
@@ -159,7 +159,7 @@
                 'Analyzed and predicted growth trends with the Analytics team, steering client decision-making that ultimately <span class="gradient-highlight">benefited 1 million+ general consumers</span>',
             ],
             tags: ["Data Pipeline", "SQL", "Analytics", "Python", "Data Consolidation"],
-            logo: "./translab.jpeg",
+            logo: "./images/translab.jpeg",
             logoAlt: "Translab Technologies Logo"
           },
         ];
@@ -507,8 +507,8 @@
                 <div className="pt-16 pb-8 flex justify-center">
                     <AnimatedElement delay={0}>
                         <img 
-                            src="./self.jpeg" 
-                            alt={profileData.name} 
+                            src="./images/self.jpeg" 
+                            alt={profileData.name}
                             className="w-40 h-40 rounded-full object-cover shadow-2xl border-4 border-white ring-4 ring-teal-500/50"
                             onError={(e) => { e.target.onerror = null; e.target.src='https://placehold.co/160x160/eeeeee/333333?text=RS'; }} 
                         />
