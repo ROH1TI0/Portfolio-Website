@@ -4,7 +4,7 @@ This is my personal portfolio built with React.
 
 ## Files
 
-- `Portfolio.jsx` - Main React component for the portfolio website
+- `index.html` - Main React component for the portfolio website
 
 ## About
 
